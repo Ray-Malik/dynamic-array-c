@@ -1,26 +1,26 @@
 #include <stddef.h>
 
 
-struct dynamic_array {
-    void *data_pointer;
-    //current size
-    size_t size;
-    //max size
-    size_t capacity;
-    //element size in bytes .
-    size_t element_size;
-};
 
 
-void def array_create() {
+//create and return a new dynamic array struct, pass in the element_size in the parameters
+void array_create() {
     
 }
-void def array_push() {
+
+//push an item onto the array. requires a pointer to the array struct, and a void* pointer of 
+// what you want to add , because if you hardcoded the paramter to a certain type like "int", you would 
+//only be able to add integers.
+void array_push() {
     
 }
-void def array_get() {
+//requires a pointer to the array struct , and the index of the item you want
+void array_get() {
     
 }
-void def array_free() {
+
+//requires pointer to array struct. free 2 things: the struct itself, and the pointer field in the 
+//struct that is pointing to the data 
+void array_free() {
     
 }
