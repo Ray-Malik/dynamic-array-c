@@ -46,6 +46,21 @@ struct dynamic_array * array_create(int element_size) {
 //only be able to add integers.
 //also double capacity if needed, and increase size after push
 void array_push(struct dynamic_array *array, void *item) {
+
+    //check if array is full. if it is, double the capacity
+    if (array->size == array->capacity) {
+        //double capacity
+        array->capacity = array->capacity * 2;
+        //copy all data to a new location
+        void *temp_pointer = calloc(array->capacity, array->element_size);
+        memcpy(temp_pointer, array->data_pointer, array->element_size * array->size);
+        //free what the data_pointer was pointing to , then make it point to the new data location
+        free(array->data_pointer);
+        array->data_pointer = temp_pointer;
+    }
+    
+
+        
     // NOTE: i thought you could do *((char *)array->data_pointer + array->size * array->element_size) = *item
     // but this is wrong for 2 reasons:
     // 1. dereferencing a char* only gives you 1 byte — so assigning *item to it only copies 1 byte
@@ -57,15 +72,20 @@ void array_push(struct dynamic_array *array, void *item) {
     //so that you can do pointer arithmetic on it one byte at a time
     memcpy((char *)array->data_pointer + array->size * array->element_size, item, array->element_size);
 
+    
+    array->size++;
+
 }
 
 //requires a pointer to the array struct , and the index of the item you want
-void array_get() {
+void * array_get(struct dynamic_array *array, int index) {
+    return (char *)array->data_pointer + (index * array->element_size);
     
 }
 
 //requires pointer to array struct. free 2 things: the struct itself, and the pointer field in the 
 //struct that is pointing to the data 
-void array_free() {
-    
+void array_free(struct dynamic_array *array) {
+    free(array->data_pointer);
+    free(array);
 }
