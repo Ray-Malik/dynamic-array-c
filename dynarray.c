@@ -1,5 +1,7 @@
 #include <stddef.h>
 #include "dynarray.h"
+#include <stdlib.h>
+#include <string.h>
 
 
 // HEAP
@@ -14,7 +16,7 @@
 // HEAP
 // ┌─────────────────────────────────────┐
 // │         struct dynamic_array        │
-// │  data_pointer  │ size │ cap │ esize │
+// │  data_pointer  │ size │ cap │ esize │ 
 // │      0x5f3a    │  0   │  4  │  4   │
 // └────────┬────────────────────────────┘
 //          │
