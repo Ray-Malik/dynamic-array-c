@@ -7,6 +7,20 @@ struct dynamic_array {
     size_t size;
     //max size
     size_t capacity;
-    //element size in bytes
+    //element size in bytes .
     size_t element_size;
 };
+
+
+void def array_create() {
+    
+}
+void def array_push() {
+    
+}
+void def array_get() {
+    
+}
+void def array_free() {
+    
+}
